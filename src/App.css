@@ -1,0 +1,37 @@
+/* Global */
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  scroll-behavior: smooth;
+}
+
+body {
+  font-size: 18px;
+  font-family: cursive;
+}
+
+#root {
+  height: 100vh;
+  width: 100vw;
+  display: flex;
+  flex-direction: column;
+}
+
+/* Colors */
+:root {
+  --light: #eee;
+  --dark: #333;
+  --text: rgb(74, 0, 74);
+  --active: rgb(173, 1, 156);
+}
+
+a {
+  text-decoration: none;
+  color: inherit;
+  font-size: inherit;
+}
+
+ul {
+  list-style: none;
+}

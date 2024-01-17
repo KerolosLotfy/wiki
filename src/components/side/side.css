@@ -1,0 +1,33 @@
+aside {
+    background-color: var(--text);
+    color: var(--light);
+    height: 100%;
+    border-right: 1px solid var(--light);
+}
+
+
+aside .tools {
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-start;
+    height: 100%;
+}
+
+
+aside .tools li  {
+    font-size: 20px;
+    padding: 20px 10px;
+    margin-bottom: 10px;
+    text-align: center;
+}
+
+
+aside .tools li a {
+    box-shadow: 0 0 7px #aaa;
+    color: var(--light);
+    border-radius: 30%;
+    padding: 7px;
+}
+
+
+

@@ -1,0 +1,19 @@
+footer {
+    width: 100%;
+    background-color: var(--text);
+    height: max-content;
+    padding: 10px;
+    color: var(--light);
+    
+}
+
+
+footer .container {
+    display: flex;
+    align-items: center;
+}
+
+p {
+    flex: 1;
+    text-align: center;
+}

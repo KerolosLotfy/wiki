@@ -1,0 +1,141 @@
+#quizzes {
+    flex: 1;
+}
+
+#quizzes .container {
+    padding: 10px;
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+    height: 100%;
+    position: relative;
+}
+
+#quizzes  form {
+    width: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+#quizzes form input {
+    padding: 15px;
+    width: 50%;
+    border: none;
+    outline: none;
+    box-shadow: 0 0 10px var(--dark);
+    border-radius: 10px;
+}
+/* 
+#quizzes .filter  {
+    display: flex;
+    width: max-content;
+    border-radius: 10px;
+    border: 5px solid var(--text);
+}
+#quizzes .filter ul {
+    display: flex;
+    gap: 20px;
+    
+    
+}
+#quizzes .filter ul li a {
+    background-color: var(--text);
+    display: flex;
+    padding: 15px;
+    color: var(--light);
+    border-radius: 5px;
+}
+
+#quizzes .filter ul li a.active {
+    background-color: transparent;
+    color: var(--active);
+} */
+
+
+
+#quizzes .questions {
+    width: 100%;
+    background-color: var(--text);
+    flex: 1;
+    padding: 10px;
+    display: flex;
+    justify-content: center;
+}
+
+.questions ul {
+    width: 90%;
+    height: 365px;
+    overflow-y: scroll;
+    gap: 10px;
+    display: flex;
+    flex-direction: column;
+    padding: 10px;
+    
+}
+
+.questions ul li {
+    background-color: var(--light);
+    padding: 10px;
+    border-radius: 10px;
+}
+
+.questions ul li p p {
+    background-color: var(--text);
+    width: max-content;
+    color: var(--light);
+    padding: 10px;
+    border-radius: 10px;
+    margin-bottom: 10px;
+}
+.questions ul li p span {
+    margin-left: 10px;
+    background-color: #ccc;
+    padding: 10px;
+    display: block;
+}
+.questions ul li .q {
+    overflow-wrap: break-word;
+    margin-bottom: 10px;
+
+}
+/* 
+.questions ul ol {
+    list-style: Upper-alpha;
+    list-style-position: inside;
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-around;
+} */
+
+.questions ul ol > li[datatype='true'] {
+    background-color: rgba(0, 203, 0, 0.627);
+    border-radius: 10px;
+}
+.questions ul::-webkit-scrollbar {
+    background-color: transparent;
+    width: 10px;
+}
+.questions ul::-webkit-scrollbar-thumb {
+    background-color: #fff;
+}
+
+.newForm {
+    position: absolute;     
+    left: 50%;
+    top: 50%;
+    width: 50% !important;
+    height: 50%;
+    transform: translate(-50%,-50%);
+    background-color: var(--text);
+    display: flex;
+    flex-direction: column;
+    gap:20px;
+    padding: 10px;
+}
+
+.newForm input {
+    width: 100% !important;
+}
+.newForm button {
+    padding: 10px;
+}

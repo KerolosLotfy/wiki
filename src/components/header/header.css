@@ -1,0 +1,57 @@
+header {
+    height:max-content; 
+    padding: 10px;
+    background-color: var(--text);
+    position: relative;
+    border-bottom: 1px solid var(--light);
+}
+
+header .container {
+    width: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    color: var(--light);
+    gap: 20px;
+}
+
+#logo  {
+    font-size: 2rem;
+    border-right: 10px solid var(--light);
+    padding: 20px;
+    border-radius: 0px 50px 50px 0;
+}
+
+nav {
+    height: 100%;
+    width: max-content;
+    flex: 1;
+    
+}
+
+nav ul {
+    display: flex;
+    gap: 20px;
+    align-items: center;
+    height: 100%;
+    flex-wrap: wrap;
+}
+
+
+nav ul li a {
+    padding: 10px;
+    border-right: 10px solid var(--light);
+    border-radius: 0 30px 30px 0;
+    height: 100%;
+    background-color: #eee1;
+    font-size: 22px;
+    transition: 0.3s;
+}
+
+
+
+nav ul li a.active {
+    color: var(--active);
+    border-color: transparent;
+    background-color: transparent
+}
