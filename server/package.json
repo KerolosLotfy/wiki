@@ -1,0 +1,24 @@
+{
+  "homepage": "https://keroloslotfy.github.io/server",
+  "name": "api",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "devDependencies": {
+    "nodemon": "^3.0.3",
+    "sqlite3": "^5.1.7"
+  },
+  "scripts": {
+    "predeploy": "npm run build",
+    "deploy": "gh-pages -d build",
+    "dev": "set BRWOSER=none&nodemon run server.js",
+    "start": "set BRWOSER=none&node server.js"
+  },
+  "author": "",
+  "license": "ISC",
+  "dependencies": {
+    "express": "^4.18.2",
+    "sqlite": "^5.1.1"
+  },
+  "type": "module"
+}
