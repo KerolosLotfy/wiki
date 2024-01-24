@@ -1,22 +1,9 @@
-import React, { useEffect, useState } from "react";
+import React, { useState } from "react";
 import { FaPlusCircle } from "react-icons/fa";
 import axios from "axios";
 
 export const Add = () => {
   const [form, setForm] = useState(false);
-  const [questions, setQuestions] = useState(null);
-
-  useEffect(() => {
-    (async () => {
-      //   await axios
-      //     .post('http"//localhost:5500', {
-      //       question: q,
-      //       answer: a,
-      //     })
-      //     .then((res) => res.data)
-      //     .catch((e) => console.log(e));
-    })();
-  }, []);
 
   const addQ = () => {
     setForm(!form);
@@ -29,7 +16,7 @@ export const Add = () => {
     setForm(false);
     if (!q & !a) return;
     await axios
-      .post('http://localhost:5500', {
+      .post("https://wiki-api-ptyn.onrender.com/", {
         question: q,
         answer: a,
       })

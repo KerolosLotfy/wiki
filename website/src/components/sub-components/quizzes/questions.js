@@ -8,12 +8,12 @@ export const Questions = () => {
   const [questions, setQuestions] = useState(null);
   useEffect(() => {
     (async () => {
-     await axios
-        .get('http://localhost:5500/')
-       .then((res) => setQuestions(res.data))
-        .catch((e) => console.log(`Error ${e.message}`))      
+      await axios
+        .get("https://wiki-api-ptyn.onrender.com/")
+        .then((res) => setQuestions(res.data))
+        .catch((e) => console.log(`Error ${e.message}`));
     })();
-  }, []);
+  }, [questions]);
 
   return (
     <div className="questions">
