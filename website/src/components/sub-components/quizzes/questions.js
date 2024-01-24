@@ -13,7 +13,7 @@ export const Questions = () => {
         .then((res) => setQuestions(res.data))
         .catch((e) => console.log(`Error ${e.message}`));
     })();
-  }, [questions]);
+  }, []);
 
   return (
     <div className="questions">
