@@ -1,12 +1,12 @@
 import express from "express";
 import { openDb } from "./sql/init-db.js";
 import { Routers } from "./handler/index.js";
+import cors from "cors";
 
-
-export const app = express()
-app.use(express.json())
-app.use(express.urlencoded({ "extended": true }))
-
+export const app = express();
+app.use(express.json());
+app.use(express.urlencoded({ extended: true }));
+app.use(cors());
 try {
     (async () => {
         await openDb()

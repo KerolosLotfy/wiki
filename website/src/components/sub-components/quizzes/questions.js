@@ -1,36 +1,40 @@
 import React, { useEffect, useState } from "react";
-import { getData } from "./add";
+// import { FetchData } from "../../../fetch-data/index";
+import axios from "axios";
+
 
 
 export const Questions = () => {
-    const [questions, setQuestions] = useState(null)
-    useEffect(() => {
-        let arr = getData()
-        setQuestions(arr)
-    }, [])
+  const [questions, setQuestions] = useState(null);
+  useEffect(() => {
+    (async () => {
+     await axios
+        .get('http://localhost:5500/')
+       .then((res) => setQuestions(res.data))
+        .catch((e) => console.log(`Error ${e.message}`))      
+    })();
+  }, []);
 
+  return (
+    <div className="questions">
+      <ul>
+        {questions &&
+          questions.map((obj, i) => {
+            return (
+              <li key={i} id={obj.Id}>
+                <p className="q">
+                  <p>Question: {obj.Id}</p>
+                  <span>{obj.question} </span>
+                </p>
 
-    return (
-        <div className="questions">
-            <ul>
-
-                {
-                    questions && questions.map((obj, i) => {
-                        return (<li key={i}>
-                            <p className="q">
-                                <p>The Question:</p>
-                                <span>{obj.q} </span>
-                            </p>
-
-                            <p className="a">
-                                <p>The Answer:</p>
-                                <span>{obj.a}</span>
-                            </p>
-                        </li>)
-                    })
-                }
-
-            </ul>
-        </div>
-    )
-}
+                <p className="a">
+                  <p>The Answer:</p>
+                  <span>{obj.answer}</span>
+                </p>
+              </li>
+            );
+          })}
+      </ul>
+    </div>
+  );
+};

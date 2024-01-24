@@ -4,10 +4,9 @@ import { NavLink } from "react-router-dom";
 import { Questions } from "./questions";
 import { Add } from "./add";
 
-
 export const Quizzes = () => {
     useEffect(() => {
-
+        
     })
     return (
         <section id="quizzes">
