@@ -3,8 +3,5 @@
     "start-front": "cd website&npm run start",
     "start-server": "cd server&npm run start",
     "dev-server": "cd server&npm run dev"
-  },
-  "dependencies": {
-    "dotenv": "^16.4.0"
   }
 }

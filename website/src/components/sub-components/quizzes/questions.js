@@ -1,40 +1,54 @@
-import React, { useEffect, useState } from "react";
-// import { FetchData } from "../../../fetch-data/index";
-import axios from "axios";
-
-
+import { useQuery } from "@tanstack/react-query";
+import { FetchQuestions } from "../../../apis";
+import { useEffect } from "react";
+import { FaTrash } from "react-icons/fa";
+const { getQ } = new FetchQuestions();
 
 export const Questions = () => {
-  const [questions, setQuestions] = useState(null);
+  const { data, isLoading, error, refetch } = useQuery({
+    queryKey: ["getData"],
+    queryFn: getQ,
+  });
+
   useEffect(() => {
-    (async () => {
-      await axios
-        .get("https://wiki-api-ptyn.onrender.com/")
-        .then((res) => setQuestions(res.data))
-        .catch((e) => console.log(`Error ${e.message}`));
-    })();
-  }, []);
+    refetch();
+  }, [data, refetch]);
+
+  if (isLoading) return <div>Loading ....</div>;
+
+  if (error) return <div>Error: {error.message}</div>;
 
   return (
     <div className="questions">
       <ul>
-        {questions &&
-          questions.map((obj, i) => {
-            return (
-              <li key={i} id={obj.Id}>
-                <p className="q">
-                  <p>Question: {obj.Id}</p>
-                  <span>{obj.question} </span>
-                </p>
+        {data ? (
+          data
+            .sort((a, b) => b.Id - a.Id)
+            .map((obj, i) => {
+              return (
+                <li key={i} id={obj.Id}>
+                  <div className="delete" onClick={() => console.log(obj.Id)}>
+                    <FaTrash size={20} />
+                  </div>
+                  <div className="q">
+                    <p>Question: {obj.Id}</p>
+                    <span>{obj.question} </span>
+                  </div>
 
-                <p className="a">
-                  <p>The Answer:</p>
-                  <span>{obj.answer}</span>
-                </p>
-              </li>
-            );
-          })}
+                  <div className="a">
+                    <p>The Answer:</p>
+                    <span>{obj.answer}</span>
+                  </div>
+                </li>
+              );
+            })
+        ) : (
+          <h2 style={{ color: "#FFF" }}>NO Questions</h2>
+        )}
       </ul>
     </div>
   );
 };
+
+
+

@@ -1,7 +1,8 @@
-import React, { useState } from "react";
 import { FaPlusCircle } from "react-icons/fa";
-import axios from "axios";
-
+import { FetchQuestions } from "../../../apis";
+import { useState } from "react";
+import { useMutation } from "@tanstack/react-query";
+const { postQ } = new FetchQuestions();
 export const Add = () => {
   const [form, setForm] = useState(false);
 
@@ -9,19 +10,21 @@ export const Add = () => {
     setForm(!form);
   };
 
+  const mutation = useMutation({
+    mutationFn: postQ,
+  });
+
+  if (mutation.isError) return <div>Error: {mutation.error.message}</div>;
+  if (mutation.isLoading) return <div>'Adding Question...'</div>;
+
+  if (mutation.isPending) return <div>Question Added</div>;
+
   const newQ = async (e) => {
     e.preventDefault();
     let q = document.querySelector("#question").value;
     let a = document.querySelector("#answer").value;
     setForm(false);
-    if (!q & !a) return;
-    await axios
-      .post("https://wiki-api-ptyn.onrender.com/", {
-        question: q,
-        answer: a,
-      })
-      .then((res) => res.data)
-      .catch((e) => console.log(`Error: ${e.message}`));
+    return { question: q, answer: a };
   };
 
   return (
@@ -52,7 +55,10 @@ export const Add = () => {
             placeholder="Write The answer"
             id="answer"
           />
-          <button type="submit" onClick={newQ}>
+          <button
+            type="submit"
+            onClick={async (e) => mutation.mutate(await newQ(e))}
+          >
             Add
           </button>
         </form>

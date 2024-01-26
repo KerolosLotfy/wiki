@@ -84,9 +84,18 @@
     min-height: 100%;
     display: flex;
     flex-direction: column;
+    position: relative;
 }
 
-.questions ul li p p {
+.questions ul li .delete {
+    position: absolute;
+    right: 10px;
+    top: 10px;
+    cursor: pointer;
+    color: red;
+}
+
+.questions ul li div p {
     background-color: var(--text);
     width: max-content;
     color: var(--light);
@@ -94,7 +103,7 @@
     border-radius: 10px;
     margin-bottom: 10px;
 }
-.questions ul li p span {
+.questions ul li div span {
     margin-left: 10px;
     background-color: #ccc;
     padding: 10px;

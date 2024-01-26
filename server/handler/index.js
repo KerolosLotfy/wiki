@@ -3,24 +3,24 @@ import { app } from "../server.js";
 const api = new Api()
 
 const create = async (req, res) => {
-    try {
-        const data = await req.body
-        const result = await api.create(data)
-        res.json('Creation Done')
-
-    } catch (e) {
-        console.log(e)
-    }
-}
+  try {
+    const data = await req.body;
+    const result = await api.create(data);
+    res.json("Creation Done");
+  } catch (e) {
+    console.log(e.message);
+    return e;
+  }
+};
 
 const getAll = async (req, res) => {
-    try {
-        const result = await api.getAll()
-        res.json(result)
-    } catch (e) {
-        console.log(e)
-    }
-}
+  try {
+    const result = await api.getAll();
+    res.json(result);
+  } catch (e) {
+    return e;
+  }
+};
 
 const Delete = async (req, res) => {
     try {
