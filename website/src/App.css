@@ -7,7 +7,7 @@
 }
 
 body {
-  font-size: 18px;
+  font-size: 17px;
   font-family: cursive;
 }
 
@@ -23,6 +23,9 @@ body {
   --light: #eee;
   --dark: #333;
   --text: rgb(74, 0, 74);
+  --text : #7136b6;
+  --text : #6f046d;
+  --gradient: #4b138b, #6f0592;
   --active: rgb(173, 1, 156);
 }
 

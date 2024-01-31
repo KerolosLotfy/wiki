@@ -7,25 +7,44 @@ export const Side = () => {
       <aside>
         <ul className="tools">
           <li>
-            <Link to="#">BSS</Link>
+            <Link to="#" title="BSS Tool">
+              BSS
+            </Link>
           </li>
           <li>
-            <Link to="#">MX</Link>
+            <Link to="#" title="Matrix Tool">
+              MX
+            </Link>
           </li>
           <li>
-            <Link to="#">OM</Link>
+            <Link to="#" title="OM Tool">
+              OM
+            </Link>
           </li>
           <li>
-            <Link to="#">360</Link>
+            <Link to="#" title="Customer360 Tool">
+              360
+            </Link>
           </li>
           <li>
-            <Link to="#">CPM</Link>
+            <Link to="#" title="CST Profile Management">
+              CPM
+            </Link>
           </li>
           <li>
-            <Link to="#">IR</Link>
+            <Link to="#" title="I-Report Tool">
+              IR
+            </Link>
           </li>
           <li>
-            <Link to="#">TM</Link>
+            <Link to="#" title="Ticket Maker">
+              TM
+            </Link>
+          </li>
+          <li>
+            <Link to="#" title="Ticket Ticket System">
+              TTS
+            </Link>
           </li>
         </ul>
       </aside>

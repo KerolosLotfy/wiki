@@ -1,0 +1,60 @@
+.mainTitle {
+    width: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    position: relative;
+    text-align: center;
+    padding: 10px;
+    font-size: 30px;
+    border-bottom: 1px solid var(--active);
+}
+
+.mainTitle::before,
+.mainTitle::after {
+    color: var(--active);
+    position: absolute;
+    content: '***';
+    left: 0;
+    top: 50%;
+    transform: translate(0,-50%);
+    font-size: 30px;
+    text-align: center;
+}
+
+.mainTitle::after {
+    right: 0;
+    left: auto;
+}
+
+
+.subTabs {
+    display: flex;
+    align-items: center;
+    justify-content: space-around;
+    position: relative;
+    width: 100%;
+    flex-wrap: wrap;
+}
+
+.subTabs > li > a.active {
+    background: none;
+    box-shadow: none;
+    color: var(--active);
+}
+
+.subTabs  .subContent {
+    /* position: absolute; */
+    left: 0;
+    top: calc(100% + 20px);
+    background-color: aliceblue;
+    width: 100%;
+    flex: 1;
+    height: 300px;
+    display: none;
+    justify-self: flex-end;
+}
+
+.subTabs   .subContent.active {
+    display: flex;
+}

@@ -1,7 +1,9 @@
 footer {
     width: 100%;
     background-color: var(--text);
-    height: max-content;
+    background-image:linear-gradient(to left, var(--gradient));
+    min-height: max-content;
+    max-height: 80px;
     padding: 10px;
     color: var(--light);
     
@@ -11,9 +13,41 @@ footer {
 footer .container {
     display: flex;
     align-items: center;
+    flex-wrap: wrap;
+
 }
 
-p {
+
+footer .DAT {
+    display: flex;
+    align-items: center;
+    justify-content: flex-end;
+    flex: 1;
+}
+
+
+
+.DAT .time i,
+.DAT .date {
+    padding: 10px;
+    border: 1px solid var(--light);
+    border-left:10px solid #eee ;
+    border-radius: 20px ;
+    margin-left: 5px;
+}
+
+.DAT .time b {
+    margin-left: 10px;
+    color: var(--active);
+}
+
+
+.container .made {
+    /* width: 100%; */
     flex: 1;
     text-align: center;
+}
+
+footer #myName {
+    color: aqua;
 }

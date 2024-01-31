@@ -1,9 +1,11 @@
 header {
     height:max-content; 
+    height: 120px;
     padding: 10px;
     background-color: var(--text);
+    background-image:linear-gradient(to right, var(--gradient));
     position: relative;
-    border-bottom: 1px solid var(--light);
+    /* border-bottom: 1px solid var(--light); */
 }
 
 header .container {
@@ -53,4 +55,10 @@ nav ul li a.active {
     color: var(--active);
     border-color: transparent;
     background-color: transparent
+}
+
+
+nav ul li:last-child a {
+    background-color: transparent;
+    border: none;
 }

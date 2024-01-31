@@ -1,4 +1,4 @@
-import { FaPlusCircle } from "react-icons/fa";
+import { FaPlusCircle,FaTimesCircle } from "react-icons/fa";
 import { FetchQuestions } from "../../../apis";
 import { useState } from "react";
 import { useMutation } from "@tanstack/react-query";
@@ -29,40 +29,58 @@ export const Add = () => {
 
   return (
     <>
-      <FaPlusCircle
-        size={30}
-        style={{
-          position: "absolute",
-          left: 10,
-          top: 10,
-          display: "block",
-          cursor: "pointer",
-        }}
-        onClick={addQ}
-      />
+      {form ? (
+        <>
+          <FaTimesCircle
+            size={30}
+            style={{
+              position: "absolute",
+              left: 10,
+              top: 10,
+              display: "block",
+              cursor: "pointer",
+            }}
+            onClick={addQ}
+          />
 
-      {form && (
-        <form className="newForm">
-          <input
-            type="text"
-            name="question"
-            placeholder="Write your Question"
-            id="question"
-          />
-          <input
-            type="text"
-            name="answer"
-            placeholder="Write The answer"
-            id="answer"
-          />
-          <button
-            type="submit"
-            onClick={async (e) => mutation.mutate(await newQ(e))}
-          >
-            Add
-          </button>
-        </form>
+          <form className="newForm">
+            <h3>Add New Question</h3>
+            <input
+              type="text"
+              name="question"
+              placeholder="Write your Question"
+              id="question"
+              required
+            />
+            <input
+              type="text"
+              name="answer"
+              placeholder="Write The answer"
+              id="answer"
+              required
+            />
+            <button
+              type="submit"
+              onSubmit={async (e) => mutation.mutate(await newQ(e))}
+            >
+              Add
+            </button>
+          </form>
+        </>
+      ) : (
+        <FaPlusCircle
+          size={30}
+          style={{
+            position: "absolute",
+            left: 10,
+            top: 10,
+            display: "block",
+            cursor: "pointer",
+          }}
+          onClick={addQ}
+        />
       )}
     </>
   );
 };
+

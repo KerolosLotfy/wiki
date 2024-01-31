@@ -1,22 +1,22 @@
 import React from "react";
-import "./quizzes.css";
 import { Questions } from "./questions";
 import { Add } from "./add";
+import { Soon } from "../../soon";
+import './sr.css'
 
-export const Quizzes = () => {
+export const SR = () => {
   return (
-    <section id="quizzes">
+    <section id="sr">
       <div className="container">
-        <Add />
-        <Search />
-        {/* <Filter /> */}
-        <Questions />
+        {/* <Add /> */}
+        {/* <Search /> */}
+        <Soon />
       </div>
     </section>
   );
 };
 
-const filter = (e) => {
+const searching = (e) => {
   e.preventDefault();
   let list = document.querySelectorAll(".questions ul li");
   list.forEach((li) => (li.style.display = "none"));
@@ -32,32 +32,16 @@ const filter = (e) => {
       li.style.display = "block";
     }
   });
-  
 };
 export const Search = () => {
   return (
     <form>
       <input
         type="text"
-        placeholder="Search by any word"
+        placeholder="Search by Level 3"
         id="search"
-        onInput={(e) => filter(e)}
+        onInput={(e) => searching(e)}
       />
     </form>
   );
 };
-
-// export const Filter = () => {
-//   return (
-//     <div className="filter">
-//       <ul>
-//         <li>
-//           <NavLink to="/#" className="active" children={"ALL"} />
-//         </li>
-//         <li>
-//           <NavLink to="/#" children={"Fav"} />
-//         </li>
-//       </ul>
-//     </div>
-//   );
-// };

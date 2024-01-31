@@ -1,8 +1,8 @@
-#quizzes {
+#sr {
   flex: 1;
 }
 
-#quizzes .container {
+#sr .container {
   padding: 10px;
   display: flex;
   flex-direction: column;
@@ -11,13 +11,13 @@
   position: relative;
 }
 
-#quizzes form {
+#sr form {
   width: 100%;
   display: flex;
   align-items: center;
   justify-content: center;
 }
-#quizzes form input {
+#sr form input {
   padding: 15px;
   width: 50%;
   border: none;
@@ -27,19 +27,19 @@
 }
 
 /* 
-#quizzes .filter  {
+#sr .filter  {
     display: flex;
     width: max-content;
     border-radius: 10px;
     border: 5px solid var(--text);
 }
-#quizzes .filter ul {
+#sr .filter ul {
     display: flex;
     gap: 20px;
     
     
 }
-#quizzes .filter ul li a {
+#sr .filter ul li a {
     background-color: var(--text);
     display: flex;
     padding: 15px;
@@ -47,12 +47,12 @@
     border-radius: 5px;
 }
 
-#quizzes .filter ul li a.active {
+#sr .filter ul li a.active {
     background-color: transparent;
     color: var(--active);
 } */
 
-#quizzes .questions {
+#sr .questions {
   width: 100%;
   /* background-color: var(--text); */
   flex: 1;

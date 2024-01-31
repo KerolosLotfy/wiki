@@ -3,12 +3,11 @@ import axios from "axios";
 // console.log(process.env.KK);
 
 export class FetchQuestions {
-  getQ = () =>
-    axios.get("https://wiki-api-ptyn.onrender.com").then((res) => res.data);
+  getQ = () => axios.get("http://localhost:5500").then((res) => res.data);
 
   postQ = (body) => {
     axios
-      .post("https://wiki-api-ptyn.onrender.com", body)
+      .post("http://localhost:5500", body)
       .then((res) => {
         console.log(res.data);
         return res.data;
@@ -18,7 +17,7 @@ export class FetchQuestions {
 
   delQ = (id) => {
     axios
-      .delete("https://wiki-api-ptyn.onrender.com", id)
+      .delete("http://localhost:5500", id)
       .then((res) => {
         console.log(res.data);
         return res.data;
