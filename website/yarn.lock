@@ -1861,6 +1861,18 @@
     "@svgr/plugin-svgo" "^5.5.0"
     loader-utils "^2.0.0"
 
+"@tanstack/query-core@5.18.0":
+  version "5.18.0"
+  resolved "https://registry.yarnpkg.com/@tanstack/query-core/-/query-core-5.18.0.tgz#445a0cbf94b49d57132255c74570cfb63cf444c2"
+  integrity sha512-8c6nxeAnGHxIDZIyDmHdmgFt4D+LprAQaJmjsnM4szcIjsWOyFlzxdqQUuQ/XuQRvUgqYaqlJTtDADlSS7pTPQ==
+
+"@tanstack/react-query@^5.18.0":
+  version "5.18.0"
+  resolved "https://registry.yarnpkg.com/@tanstack/react-query/-/react-query-5.18.0.tgz#da948737c904e7796df2aab2e52a92bdd755ffb1"
+  integrity sha512-7FKxNfxxKEL7n3ADpwp81Fy4FX85hNkYVzQQVQsF0JAPl93c3d1gmNZMIbEtOqgYfom1/ontGh3FiZGYj3xyWA==
+  dependencies:
+    "@tanstack/query-core" "5.18.0"
+
 "@testing-library/dom@^8.5.0":
   version "8.20.1"
   resolved "https://registry.npmjs.org/@testing-library/dom/-/dom-8.20.1.tgz"
@@ -3964,11 +3976,6 @@ dot-case@^3.0.4:
     no-case "^3.0.4"
     tslib "^2.0.3"
 
-dotenv-expand@^10.0.0:
-  version "10.0.0"
-  resolved "https://registry.npmjs.org/dotenv-expand/-/dotenv-expand-10.0.0.tgz"
-  integrity sha512-GopVGCpVS1UKH75VKHGuQFqS1Gusej0z4FyQkPdwjil2gNIv+LNsqBlboOzpJFZKVT95GkCyWJbBSdFEFUWI2A==
-
 dotenv-expand@^5.1.0:
   version "5.1.0"
   resolved "https://registry.npmjs.org/dotenv-expand/-/dotenv-expand-5.1.0.tgz"
@@ -3978,11 +3985,6 @@ dotenv@^10.0.0:
   version "10.0.0"
   resolved "https://registry.npmjs.org/dotenv/-/dotenv-10.0.0.tgz"
   integrity sha512-rlBi9d8jpv9Sf1klPjNfFAuWDjKLwTIJJ/VxtoTwIR6hnZxcEOQCZg2oIL3MWBYw5GpUDKOEnND7LXTbIpQ03Q==
-
-dotenv@^16.4.1:
-  version "16.4.1"
-  resolved "https://registry.yarnpkg.com/dotenv/-/dotenv-16.4.1.tgz#1d9931f1d3e5d2959350d1250efab299561f7f11"
-  integrity sha512-CjA3y+Dr3FyFDOAMnxZEGtnW9KBR2M0JvvUtXNW+dYJL5ROWxP9DUHCwgFqpMk0OXCc0ljhaNTr2w/kutYIcHQ==
 
 duplexer@^0.1.2:
   version "0.1.2"
@@ -7799,11 +7801,6 @@ process-nextick-args@~2.0.0:
   version "2.0.1"
   resolved "https://registry.npmjs.org/process-nextick-args/-/process-nextick-args-2.0.1.tgz"
   integrity sha512-3ouUOpQhtgrbOa17J7+uxOTpITYWaGP7/AhoR3+A+/1e9skrzelGi/dXzEYyvbxubEF6Wn2ypscTKiKJFFn1ag==
-
-process@^0.11.10:
-  version "0.11.10"
-  resolved "https://registry.npmjs.org/process/-/process-0.11.10.tgz"
-  integrity sha512-cdGef/drWFoydD1JsMzuFf8100nZl+GT+yacc2bEced5f9Rjk4z+WtFUTBu9PhOi9j/jfmBPu0mMEY4wIdAF8A==
 
 promise@^8.1.0:
   version "8.3.0"
