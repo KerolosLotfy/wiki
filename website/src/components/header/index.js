@@ -13,7 +13,7 @@ export const Header = () => {
         <nav>
           <ul>
             <li>
-              <a href="info/nonTech">Non-Tech</a>
+              <NavLink to="info/nonTech">Non-Tech</NavLink>
             </li>
             <li>
               <NavLink to="info/tech">Tech</NavLink>
