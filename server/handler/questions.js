@@ -9,6 +9,7 @@ const create = async (req, res) => {
     const data = await req.body;
     const result = await api.create(data);
     res.json("Creation Done");
+    return result;
   } catch (e) {
     console.log(e.message);
     return e;
@@ -18,7 +19,6 @@ const create = async (req, res) => {
 const getAll = async (req, res) => {
   try {
     const result = await api.getAll();
-    console.log(result);
     res.send(result);
   } catch (e) {
     return e;
@@ -29,6 +29,7 @@ const Delete = async (req, res) => {
   try {
     const result = await api.delete(req.body.id);
     res.json(result);
+    return result;
   } catch (e) {
     console.log(e);
   }

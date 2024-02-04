@@ -1,8 +1,8 @@
 import { useMutation, useQuery } from "@tanstack/react-query";
-import { FetchQuestions } from "../../../apis";
+import { FetchQuestions } from "../../../apis/questions";
 import { useEffect } from "react";
 import { FaTrash } from "react-icons/fa";
-const { getQ } = new FetchQuestions();
+const { getQ, delQ } = new FetchQuestions();
 
 export const Questions = () => {
   const { data, isLoading, error, refetch } = useQuery({
@@ -11,8 +11,8 @@ export const Questions = () => {
   });
 
   const mutation = useMutation({
-    // 'mutationFn': deleteQ,
-    mutationKey: ["deleteQ"],
+    mutationFn: delQ,
+    mutationKey: ["delQ"],
   });
 
   useEffect(() => {
@@ -28,20 +28,26 @@ export const Questions = () => {
       <ul>
         {data ? (
           data
-            .sort((a, b) => b.Id - a.Id)
+            .sort((a, b) => b.id - a.id)
             .map((obj, i) => {
               return (
                 <li key={i} id={obj.Id}>
                   {localStorage.getItem("access") === "admin" && (
-                    <div
+                    <FaTrash
+                      size={20}
                       className="delete"
-                      onClick={() => mutation.mutate(obj.Id)}
-                    >
-                      <FaTrash size={20} />
-                    </div>
+                      onClick={async (e) => {
+                        let check = window.confirm(
+                          "Are you sure to delete this question"
+                        );
+                        if (check) {
+                          mutation.mutate(obj.id);
+                        }
+                      }}
+                    />
                   )}
                   <div className="q">
-                    <p>Question: {obj.Id}</p>
+                    <p>Question: {obj.id}</p>
                     <span>{obj.question} </span>
                   </div>
 

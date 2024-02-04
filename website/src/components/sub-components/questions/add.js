@@ -1,4 +1,4 @@
-import { FaPlusCircle,FaTimesCircle } from "react-icons/fa";
+import { FaPlusCircle, FaTimesCircle } from "react-icons/fa";
 import { FetchQuestions } from "../../../apis";
 import { useState } from "react";
 import { useMutation } from "@tanstack/react-query";
@@ -23,6 +23,7 @@ export const Add = () => {
     e.preventDefault();
     let q = document.querySelector("#question").value;
     let a = document.querySelector("#answer").value;
+    // if (!q || !a) return;
     setForm(false);
     return { question: q, answer: a };
   };
@@ -61,7 +62,7 @@ export const Add = () => {
             />
             <button
               type="submit"
-              onSubmit={async (e) => mutation.mutate(await newQ(e))}
+              onClick={async (e) => mutation.mutate(await newQ(e))}
             >
               Add
             </button>
@@ -83,4 +84,3 @@ export const Add = () => {
     </>
   );
 };
-

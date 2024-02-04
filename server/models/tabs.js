@@ -12,12 +12,11 @@ export class Tabs {
     }
   };
 
-  getAll = async (navId) => {
+  getAll = async () => {
     try {
-      console.log(navId);
       const DB = await openDb();
-      const sql = `select * from tabs where navId=?`;
-      const result = await DB.all(sql, [navId]);
+      const sql = `select * from tabs`;
+      const result = await DB.all(sql);
       return result;
     } catch (e) {
       throw new Error(`Can't get all tabs to ${e.message}`);

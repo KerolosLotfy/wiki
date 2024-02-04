@@ -1,6 +1,6 @@
 import React from "react";
-import { Questions } from "./questions";
-import { Add } from "./add";
+// import { Questions } from "./questions";
+// import { Add } from "./add";
 import { Soon } from "../../soon";
 import './sr.css'
 

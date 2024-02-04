@@ -17,7 +17,6 @@ export class Question {
       const DB = await openDb();
       const sql = `select * from questions`;
       const result = await DB.all(sql);
-      console.log("kk");
       return result;
     } catch (e) {
       throw new Error(`Can't get all questions to ${e.message}`);
@@ -48,7 +47,6 @@ export class Question {
 
   delete = async (id) => {
     try {
-      console.log(id);
       const DB = await openDb();
       const sql = `DELETE FROM questions WHERE id =?`;
       const result = await DB.run(sql, [id]);
@@ -58,5 +56,3 @@ export class Question {
     }
   };
 }
-
-

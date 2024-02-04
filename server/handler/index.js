@@ -8,5 +8,6 @@ export const routersHandler = (app) => {
 
   // Info
   app.use("/api/nav", navTabs);
+  app.use("/api/tabs", tabs);
   app.use("/api/sub", subTabs);
 };

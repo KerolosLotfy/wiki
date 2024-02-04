@@ -32,7 +32,6 @@ const filter = (e) => {
       li.style.display = "block";
     }
   });
-  
 };
 export const Search = () => {
   return (

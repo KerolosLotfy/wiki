@@ -17,8 +17,9 @@ const create = async (req, res) => {
 
 const getAll = async (req, res) => {
   try {
-    const result = await api.getAll(req.body.tabId);
+    const result = await api.getAll();
     res.json(result);
+    return result;
   } catch (e) {
     return e.message;
   }

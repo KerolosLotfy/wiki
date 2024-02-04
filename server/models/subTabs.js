@@ -12,12 +12,11 @@ export class SubTabs {
     }
   };
 
-  getAll = async (tabId) => {
+  getAll = async () => {
     try {
-      console.log(tabId);
       const DB = await openDb();
-      const sql = `select * from subTabs where tabId=?`;
-      const result = await DB.all(sql, [tabId]);
+      const sql = `select * from subTabs`;
+      const result = await DB.all(sql);
       return result;
     } catch (e) {
       throw new Error(`Can't get all subTabs to ${e.message}`);

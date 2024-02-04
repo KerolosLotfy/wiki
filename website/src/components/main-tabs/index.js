@@ -1,19 +1,25 @@
 import { NavLink } from "react-router-dom";
 import React, { useEffect, useState } from "react";
+import { HandleQuery } from "../../handleQueries";
 
-export const MainTabs = ({ maiObj }) => {
+export const MainTabs = ({ navId }) => {
   const [arr, setArr] = useState();
+  const { tabs } = HandleQuery();
+  const navObj = HandleQuery().nav.filter((obj) => obj.id === navId)[0];
+
   useEffect(() => {
-    setArr(maiObj);
-  }, [maiObj]);
+    const arr = tabs && tabs.filter((obj) => obj.navId === navId);
+    tabs && setArr(arr);
+  }, [tabs, navId]);
+
   return (
     <div className="mainTabs">
       <ul>
-        {arr
-          ? arr.cont.map((obj, i) => {
+        {arr?.length
+          ? arr.map((obj) => {
               return (
-                <li key={i} id={obj.title}>
-                  <NavLink to={`${maiObj?.navTitle}/${obj.title}`}>
+                <li key={obj.id} id={obj.id}>
+                  <NavLink to={`${navObj.title}/${obj.title}`}>
                     {obj.title}
                   </NavLink>
                 </li>

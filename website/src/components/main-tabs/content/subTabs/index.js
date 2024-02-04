@@ -1,8 +1,10 @@
 import React, { useEffect, useState } from "react";
-import { NavLink } from "react-router-dom";
+import { NavLink, useLocation } from "react-router-dom";
 
-export const SubTabs = ({ subTabs, mainObj, subObj }) => {
+export const SubTabs = ({ subTabs, objTab }) => {
   const [arr, setArr] = useState([]);
+  const { pathname } = useLocation();
+  const p = pathname.split("/")[2];
 
   useEffect(() => {
     setArr(subTabs);
@@ -11,13 +13,11 @@ export const SubTabs = ({ subTabs, mainObj, subObj }) => {
   return (
     <ul className="subTabs">
       {arr?.length
-        ? arr.map((obj, i) => {
+        ? arr.map((obj) => {
             return (
-              <li key={i}>
-                <NavLink
-                  to={`${mainObj.navTitle}/${subObj.title}/${obj.subTitle}`}
-                >
-                  {obj.subTitle}
+              <li key={obj.id}>
+                <NavLink to={`${p}/${objTab.title}/${obj.title}`}>
+                  {obj.title}
                 </NavLink>
               </li>
             );

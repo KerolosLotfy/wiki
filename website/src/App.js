@@ -4,12 +4,11 @@ import { Header } from "./components/header";
 import { MainSection } from "./components/main-section";
 import { Home } from "./components/sub-components/home";
 import { Soon } from "./components/soon";
-import { Quizzes } from "./components/sub-components/quizzes";
+import { Quizzes } from "./components/sub-components/questions";
 import { SR } from "./components/sub-components/sr";
 import { Error404 } from "./components/error";
-import { NonTech } from "./components/sub-components/info";
+import { Info } from "./components/sub-components/info";
 import { Content } from "./components/main-tabs/content";
-
 
 function App() {
   const { pathname } = useLocation();
@@ -23,7 +22,7 @@ function App() {
           <Route path="/" element={<Home />} />
 
           {/* Info */}
-          <Route path="info" element={<NonTech />}>
+          <Route path="info" element={<Info />}>
             <Route path={p} element={<Content />}>
               <Route path={p} element={<Soon />} />
             </Route>

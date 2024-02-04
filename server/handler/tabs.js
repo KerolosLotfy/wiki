@@ -7,6 +7,7 @@ const api = new Tabs();
 const create = async (req, res) => {
   try {
     const data = await req.body;
+    console.log(data);
     const result = await api.create(data);
     res.json("Creation Done");
   } catch (e) {
@@ -15,10 +16,11 @@ const create = async (req, res) => {
   }
 };
 
-const getAll = async (req, res) => {
+const getAll = async (req , res) => {
   try {
-    const result = await api.getAll(req.body.navId);
+    const result = await api.getAll();
     res.json(result);
+    return result;
   } catch (e) {
     return e.message;
   }

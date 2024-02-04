@@ -7,18 +7,15 @@ export const SubContent = ({ subTabs }) => {
   const { pathname } = useLocation();
   useEffect(() => {
     let obj =
-      subTabs &&
-      subTabs.filter((obj) =>
-        pathname.toLowerCase().includes(obj.subTitle.toLowerCase())
-      );
+      subTabs && subTabs.filter((obj) => pathname.search(obj.title) > 0);
     obj && setArr(obj);
   }, [pathname, subTabs]);
 
   return (
     <div className="subContent">
       {arr?.length ? (
-        arr[0].subContent ? (
-          <div dangerouslySetInnerHTML={{ __html: arr[0].subContent }} />
+        arr[0].content ? (
+          <div dangerouslySetInnerHTML={{ __html: arr[0].content }} />
         ) : (
           <Soon />
         )
