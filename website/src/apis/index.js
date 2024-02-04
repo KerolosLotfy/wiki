@@ -1,12 +1,13 @@
 import axios from "axios";
-// import process from "process";
-// console.log(process.env.KK);
+
+const URL_SERVER = "https://wiki-api-ptyn.onrender.com/";
+
 export class FetchQuestions {
-  getQ = () => axios.get("http://localhost:5500/api/q").then((res) => res.data);
+  getQ = () => axios.get(`${URL_SERVER}/api/q`).then((res) => res.data);
 
   postQ = (body) => {
     axios
-      .post("http://localhost:5500/api/q", body)
+      .post(`${URL_SERVER}/api/q`, body)
       .then((res) => {
         console.log(res.data);
         return res.data;
@@ -17,7 +18,7 @@ export class FetchQuestions {
   delQ = (id) => {
     console.log(id);
     axios
-      .delete("http://localhost:5500/api/q", id)
+      .delete(`${URL_SERVER}/api/q`, id)
       .then((res) => {
         console.log(res.data);
         return res.data;
@@ -25,4 +26,3 @@ export class FetchQuestions {
       .catch((e) => e);
   };
 }
-
