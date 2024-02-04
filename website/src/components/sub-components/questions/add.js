@@ -1,5 +1,5 @@
 import { FaPlusCircle, FaTimesCircle } from "react-icons/fa";
-import { FetchQuestions } from "../../../apis";
+import { FetchQuestions } from "../../../apis/questions";
 import { useState } from "react";
 import { useMutation } from "@tanstack/react-query";
 const { postQ } = new FetchQuestions();
@@ -23,7 +23,7 @@ export const Add = () => {
     e.preventDefault();
     let q = document.querySelector("#question").value;
     let a = document.querySelector("#answer").value;
-    // if (!q || !a) return;
+    if (!q || !a) return;
     setForm(false);
     return { question: q, answer: a };
   };
