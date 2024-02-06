@@ -28,9 +28,7 @@ export const Content = ({ navId }) => {
         <div id={tab.id}>
           <h3 className="mainTitle">{tab.mainTitle}</h3>
           {objTab && <SubTabs subTabs={arr} objTab={objTab} />}
-          <div className="subContent">
-            <SubContent subTabs={arr} />
-          </div>
+          <SubContent subTabs={arr} />
         </div>
       ) : (
         "NO Content"

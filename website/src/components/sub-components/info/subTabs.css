@@ -1,60 +1,86 @@
 .mainTitle {
-    width: 100%;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    position: relative;
-    text-align: center;
-    padding: 10px;
-    font-size: 30px;
-    border-bottom: 1px solid var(--active);
+  width: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  position: relative;
+  text-align: center;
+  padding: 10px;
+  font-size: 30px;
+  border-bottom: 1px solid var(--active);
 }
 
 .mainTitle::before,
 .mainTitle::after {
-    color: var(--active);
-    position: absolute;
-    content: '***';
-    left: 0;
-    top: 50%;
-    transform: translate(0,-50%);
-    font-size: 30px;
-    text-align: center;
+  color: var(--active);
+  position: absolute;
+  content: "***";
+  left: 0;
+  top: 50%;
+  transform: translate(0, -50%);
+  font-size: 30px;
+  text-align: center;
 }
 
 .mainTitle::after {
-    right: 0;
-    left: auto;
-}
-
-
-.subTabs {
-    display: flex;
-    align-items: center;
-    justify-content: space-around;
-    position: relative;
-    width: 100%;
-    flex-wrap: wrap;
+  right: 0;
+  left: auto;
 }
 
 .subTabs > li > a.active {
-    background: none;
-    box-shadow: none;
-    color: var(--active);
+  background: none;
+  box-shadow: none;
+  color: var(--active);
 }
 
-.subTabs  .subContent {
-    /* position: absolute; */
-    left: 0;
-    top: calc(100% + 20px);
-    background-color: aliceblue;
-    width: 100%;
-    flex: 1;
-    height: 300px;
-    display: none;
-    justify-self: flex-end;
+.subContent {
+  background-color: var(--light);
+  width: 100%;
+  flex: 1;
+  height: 300px;
+  display: flex;
+  justify-self: flex-end;
+  padding: 10px;
+  border-radius: 10px 0 10px 0;
+  color: var(--dark);
 }
 
-.subTabs   .subContent.active {
-    display: flex;
+.subContent .head {
+  color: var(--text);
+  width: 100%;
+  height: max-content;
+  font-weight: bolder;
+  text-transform: capitalize;
+}
+
+.subContent .update {
+  background-color: yellow;
+  padding: 5px;
+  border-radius: 0 10px 0 10px;
+  width: max-content;
+  height: max-content;
+  box-shadow: 0 0 10px var(--dark);
+  font-weight: bolder;
+}
+
+.subContent .sla {
+  font-weight: bolder;
+  box-shadow: 0 0 10px var(--dark);
+  width: max-content;
+  height: max-content;
+  background-image: linear-gradient(45deg, var(--gradient));
+  color: var(--light);
+  padding: 5px;
+  border-radius: 0 10px 0 10px;
+}
+
+.subContent .sr {
+  font-weight: bolder;
+  box-shadow: 0 0 10px var(--dark);
+  width: 100%;
+  height: max-content;
+  background-image: green;
+  color: var(--light);
+  padding: 5px;
+  border-radius: 0 10px 0 10px;
 }
