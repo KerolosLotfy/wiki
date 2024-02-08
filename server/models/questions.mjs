@@ -6,7 +6,7 @@ export class Question {
       const conDB = await pool.connect();
       const sql = `insert into questions (question,answer) values ($1,$2);`;
       const result = await pool.query(sql, [question, answer]);
-      pool.end();
+      conDB.release();
       if (result.rowCount) return "Added";
     } catch (e) {
       throw new Error(`Can't create new questions to ${e.message}`);
@@ -18,7 +18,7 @@ export class Question {
       const conDB = await pool.connect();
       const sql = `select * from questions`;
       const result = await conDB.query(sql);
-      pool.end();
+      conDB.release();
       return result.rows;
     } catch (e) {
       throw new Error(`Can't get all questions to ${e.message}`);
@@ -30,7 +30,7 @@ export class Question {
       const conDB = await pool.connect();
       const sql = `select * from questions where id=$1 `;
       const result = await pool.query(sql, [id]);
-      pool.end();
+      conDB.release();
       return result.rows[0];
     } catch (e) {
       throw new Error(`Can't get a question to ${e.message}`);
@@ -42,7 +42,7 @@ export class Question {
       const conDB = await pool.connect();
       const sql = `UPDATE questions SET question = $1, answer = $2 WHERE id = $3`;
       const result = await pool.query(sql, [question, answer, id]);
-      pool.end();
+      conDB.release();
       if (result.rowCount) return "Updated";
     } catch (e) {
       throw new Error(`Can't Update a question to ${e.message}`);
@@ -54,7 +54,7 @@ export class Question {
       const conDB = await pool.connect();
       const sql = `DELETE FROM questions WHERE id =$1`;
       const result = await pool.query(sql, [id]);
-      pool.end();
+      conDB.release();
       if (result.rowCount) return "Deleted";
     } catch (e) {
       throw new Error(`Can't Delete a question to ${e.message}`);

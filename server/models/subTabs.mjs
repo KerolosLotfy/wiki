@@ -6,7 +6,7 @@ export class SubTabs {
       const conDB = await pool.connect();
       const sql = `insert into subTabs (tabId,title,content) values ($1,$2,$3);`;
       const result = await conDB.query(sql, [tabId, title, content]);
-      pool.end();
+      conDB.release();
       if (result.rowCount) return "Added";
     } catch (e) {
       throw new Error(`Can't create new subTab to ${e.message}`);
@@ -18,7 +18,7 @@ export class SubTabs {
       const conDB = await pool.connect();
       const sql = `select * from subTabs`;
       const result = await conDB.query(sql);
-      pool.end();
+      conDB.release();
       return result.rows;
     } catch (e) {
       throw new Error(`Can't get all subTabs to ${e.message}`);
@@ -30,7 +30,7 @@ export class SubTabs {
       const conDB = await pool.connect();
       const sql = `select * from subTabs WHERE id =$1`;
       const result = await conDB.query(sql, [id]);
-      pool.end();
+      conDB.release();
       return result.rows[0];
     } catch (e) {
       throw new Error(`Can't get subTab to ${e.message}`);
@@ -42,7 +42,7 @@ export class SubTabs {
       const conDB = await pool.connect();
       const sql = `select * from subTabs WHERE tabId =$1`;
       const result = await conDB.query(sql, [tabId]);
-      pool.end();
+      conDB.release();
       return result.rows;
     } catch (e) {
       throw new Error(`Can't get Tab by navId to ${e.message}`);
