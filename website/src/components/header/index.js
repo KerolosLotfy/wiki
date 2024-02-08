@@ -3,16 +3,12 @@ import { NavLink, Link } from "react-router-dom";
 import "./header.css";
 import { FaQuestionCircle } from "react-icons/fa";
 import { useQuery } from "@tanstack/react-query";
-
 import { FetchInfo } from "../../apis/info";
 
 const { getInfo } = new FetchInfo();
+
 export const Header = () => {
-  const {
-    data: nav,
-    refetch,
-    isLoading,
-  } = useQuery({
+  const { data: nav, refetch } = useQuery({
     queryKey: ["getNav"],
     queryFn: getInfo.nav,
   });

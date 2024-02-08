@@ -1,7 +1,7 @@
 import axios from "axios";
 // import process from "process";
 // console.log(process.env.KK);
-const URL_SERVER = "http://localhost:5500/";
+const URL_SERVER = "https://wiki-api-ptyn.onrender.com/";
 
 export class FetchInfo {
   getInfo = {

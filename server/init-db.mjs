@@ -9,6 +9,9 @@ const config = {
   database: env.DB_NAME,
   password: env.DB_PASS,
   user: env.DB_USER,
+  ssl:true
 };
 
 export const pool = new pg.Pool(config);
+
+

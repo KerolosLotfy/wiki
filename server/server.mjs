@@ -9,8 +9,7 @@ app.use(cors());
 
 try {
   (async () => {
-    
-    app.get("/t_s", (req, res) => {
+    app.get("/", (req, res) => {
       return res.statusCode == 200
         ? res.json("Server Running")
         : res.json({
@@ -24,7 +23,9 @@ try {
     app.use("*", (req, res) => res.send("Error: Not Found"));
 
     app.listen(5500, () => {
-      console.log("Server Running on http://localhost:5500");
+      console.log(
+        `Server Running on ${process.env.URL_SERVER || "http://localhost:5500"}`
+      );
     });
   })();
 } catch (error) {
