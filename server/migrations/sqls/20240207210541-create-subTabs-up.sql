@@ -1,5 +1,5 @@
 create table if not exists subTabs (
-	id INTEGER NOT NULL PRIMARY KEY AUTOINCREMENT,
+	id serial primary key,
 	tabId int NOT NULL,
 	title VARCHAR NOT NULL,
 	content text NOT NULL,

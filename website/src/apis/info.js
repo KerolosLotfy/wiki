@@ -1,7 +1,7 @@
 import axios from "axios";
 // import process from "process";
 // console.log(process.env.KK);
-const URL_SERVER = "https://wiki-api-ptyn.onrender.com/";
+const URL_SERVER = "http://localhost:5500/";
 
 export class FetchInfo {
   getInfo = {
@@ -98,11 +98,11 @@ export class FetchInfo {
   getOne = {
     nav: (id) =>
       axios
-        .get(`${URL_SERVER}api/nav`, {
+        .get(`${URL_SERVER}api/nav/${id}`, {
           headers: {
             "Content-Type": "application/json",
           },
-          data: { id },
+          params: { id },
         })
         .then((res) => {
           console.log(res.data);
@@ -110,30 +110,28 @@ export class FetchInfo {
         })
         .catch((e) => e),
 
-    tabs: (id) =>
+    tabs: (navId) =>
       axios
-        .delete(`${URL_SERVER}api/tabs`, {
+        .get(`${URL_SERVER}api/tabs/${navId}`, {
           headers: {
             "Content-Type": "application/json",
           },
-          data: { id },
+          params: { navId },
         })
         .then((res) => {
-          console.log(res.data);
           return res.data;
         })
         .catch((e) => e),
 
-    sub: (id) =>
+    sub: (tabId) =>
       axios
-        .delete(`${URL_SERVER}api/sub`, {
+        .get(`${URL_SERVER}api/sub/${tabId}`, {
           headers: {
             "Content-Type": "application/json",
           },
-          data: { id },
+          params: { tabId },
         })
         .then((res) => {
-          console.log(res.data);
           return res.data;
         })
         .catch((e) => e),

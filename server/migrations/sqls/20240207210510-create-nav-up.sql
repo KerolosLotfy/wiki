@@ -1,5 +1,4 @@
 create table if not exists nav (
-	id INTEGER NOT NULL PRIMARY KEY AUTOINCREMENT,
+	id serial primary key,
 	title VARCHAR NOT NULL
 );
-

@@ -1,7 +1,7 @@
 import axios from "axios";
 // import process from "process";
 // console.log(process.env.KK);
-const URL_SERVER = "https://wiki-api-ptyn.onrender.com/";
+const URL_SERVER = "http://localhost:5500/";
 
 export class FetchQuestions {
   getQ = () =>
@@ -14,7 +14,6 @@ export class FetchQuestions {
     axios
       .post(`${URL_SERVER}api/q`, body)
       .then((res) => {
-        console.log(res);
         return res.data;
       })
       .catch((e) => e.message);

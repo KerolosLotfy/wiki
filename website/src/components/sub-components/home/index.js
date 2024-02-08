@@ -10,14 +10,15 @@ export const Home = () => {
         justifyContent: "center",
         alignItems: "center",
         color: "#6f0592",
+        width:'100%'
       }}
     >
       <img
         className="react-logo"
         src={image}
         alt="we"
-        width={300}
-        height={300}
+        width={200}
+        height={200}
         style={{ maxWidth: "100%" }}
       ></img>
       <h1>Telecom Egypt</h1>

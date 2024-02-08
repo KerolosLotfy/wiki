@@ -2,13 +2,13 @@ import React from "react";
 
 export const Soon = () => {
   return (
-    <h1
+    <p
       style={{
-        fontSize: "40px",
+        fontSize: "20px",
         textAlign: "center",
       }}
     >
-      Coming Soon
-    </h1>
+      Coming Soon...
+    </p>
   );
 };

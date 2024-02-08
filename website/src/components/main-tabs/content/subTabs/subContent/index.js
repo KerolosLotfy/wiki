@@ -1,15 +1,21 @@
-import React, { useEffect, useState } from "react";
+import React from "react";
 import { useLocation } from "react-router-dom";
 import { Soon } from "../../../../soon";
+import { FetchInfo } from "../../../../../apis/info";
+import { useQuery } from "@tanstack/react-query";
+const { getOne } = new FetchInfo();
 
-export const SubContent = ({ subTabs }) => {
-  const [arr, setArr] = useState();
+export const SubContent = ({ tabId }) => {
+  // const [arr, setArr] = useState();
   const { pathname } = useLocation();
-  useEffect(() => {
-    let obj =
-      subTabs && subTabs.filter((obj) => pathname.search(obj.title) > 0);
-    obj && setArr(obj);
-  }, [pathname, subTabs]);
+  const { data: sub, refetch } = useQuery({
+    queryKey: ["getByTab"],
+    queryFn: () => getOne.sub(tabId),
+  });
+
+  const arr = sub && sub.filter((obj) => pathname.search(obj.title) > 0);
+
+  refetch();
 
   return (
     <div className="subContent">

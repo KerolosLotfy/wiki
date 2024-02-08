@@ -17,7 +17,7 @@ export const Questions = () => {
 
   useEffect(() => {
     refetch();
-  }, [data, refetch]);
+  }, [refetch]);
 
   if (isLoading) return <div>Loading ....</div>;
 
@@ -26,38 +26,36 @@ export const Questions = () => {
   return (
     <div className="questions">
       <ul>
-        {data ? (
-          data
-            .sort((a, b) => b.id - a.id)
-            .map((obj, i) => {
-              return (
-                <li key={i} id={obj.Id}>
-                  {localStorage.getItem("access") === "admin" && (
-                    <FaTrash
-                      size={20}
-                      className="delete"
-                      onClick={async (e) => {
-                        let check = window.confirm(
-                          "Are you sure to delete this question"
-                        );
-                        if (check) {
-                          mutation.mutate(obj.id);
-                        }
-                      }}
-                    />
-                  )}
-                  <div className="q">
-                    <p>Question: {obj.id}</p>
-                    <span>{obj.question} </span>
-                  </div>
+        {data?.length ? (
+          data.map((obj, i, arr) => {
+            return (
+              <li key={i} id={obj.Id}>
+                {localStorage.getItem("access") === "admin" && (
+                  <FaTrash
+                    size={20}
+                    className="delete"
+                    onClick={async (e) => {
+                      let check = window.confirm(
+                        "Are you sure to delete this question"
+                      );
+                      if (check) {
+                        mutation.mutate(obj.id);
+                      }
+                    }}
+                  />
+                )}
+                <div className="q">
+                  <p>Question: {arr.length - i}</p>
+                  <span>{obj.question} </span>
+                </div>
 
-                  <div className="a">
-                    <p>The Answer:</p>
-                    <span>{obj.answer}</span>
-                  </div>
-                </li>
-              );
-            })
+                <div className="a">
+                  <p>The Answer:</p>
+                  <span>{obj.answer}</span>
+                </div>
+              </li>
+            );
+          })
         ) : (
           <h2 style={{ color: "#FFF" }}>NO Questions</h2>
         )}

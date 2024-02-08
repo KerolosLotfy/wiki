@@ -1,25 +1,30 @@
-import React, { useEffect, useState } from "react";
+import React from "react";
 import { MainTabs } from "../../main-tabs";
 import { useLocation } from "react-router-dom";
 import { Content } from "../../main-tabs/content";
 import "./subTabs.css";
-import { HandleQuery } from "../../../handleQueries";
+import { FetchInfo } from "../../../apis/info";
+import { useQuery } from "@tanstack/react-query";
 
+const { getInfo } = new FetchInfo();
 export const Info = () => {
-  const [navId, setNavId] = useState();
   const { pathname } = useLocation();
-  const { nav } = HandleQuery();
+  const { data: nav, refetch } = useQuery({
+    queryKey: ["getNav"],
+    queryFn: getInfo.nav,
+  });
+
   const obj = nav && nav.filter((obj) => pathname.search(obj.title) > 0)[0];
 
-  useEffect(() => {
-    obj && setNavId(obj.id);
-  }, [obj]);
+  refetch();
 
   return (
     <section id="nonTech">
-      {obj && <MainTabs navId={navId} />}
+      {obj && <MainTabs navId={obj.id} navTitle={obj.title} />}
       <div className="sub-content">
-        <div className="container">{obj && <Content navId={obj.id} />}</div>
+        <div className="container">
+          {obj && <Content navId={obj.id} navTitle={obj.title} />}
+        </div>
       </div>
     </section>
   );

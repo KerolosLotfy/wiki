@@ -1,22 +1,23 @@
-import React, { useEffect, useState } from "react";
-import { NavLink, useLocation } from "react-router-dom";
+import React from "react";
+import { NavLink } from "react-router-dom";
+import { FetchInfo } from "../../../../apis/info";
+import { useQuery } from "@tanstack/react-query";
+const { getOne } = new FetchInfo();
 
-export const SubTabs = ({ subTabs, objTab }) => {
-  const [arr, setArr] = useState([]);
-  const { pathname } = useLocation();
-  const p = pathname.split("/")[2];
+export const SubTabs = ({ tabId, navTitle, tabTitle }) => {
+  const { data: sub, refetch } = useQuery({
+    queryKey: ["getByTab"],
+    queryFn: () => getOne.sub(tabId),
+  });
 
-  useEffect(() => {
-    setArr(subTabs);
-  }, [subTabs]);
-
+  refetch();
   return (
     <ul className="subTabs">
-      {arr?.length
-        ? arr.map((obj) => {
+      {sub?.length
+        ? sub.map((obj) => {
             return (
               <li key={obj.id}>
-                <NavLink to={`${p}/${objTab.title}/${obj.title}`}>
+                <NavLink to={`${navTitle}/${tabTitle}/${obj.title}`}>
                   {obj.title}
                 </NavLink>
               </li>

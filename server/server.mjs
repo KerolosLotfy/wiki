@@ -1,8 +1,6 @@
 import express from "express";
-import { openDb } from "./sql/init-db.js";
-import { questions } from "./handler/questions.js";
 import cors from "cors";
-import { routersHandler } from "./handler/index.js";
+import { routersHandler } from "./handler/index.mjs";
 
 export const app = express();
 app.use(express.json());
@@ -11,7 +9,7 @@ app.use(cors());
 
 try {
   (async () => {
-    await openDb();
+    
     app.get("/t_s", (req, res) => {
       return res.statusCode == 200
         ? res.json("Server Running")
@@ -23,7 +21,7 @@ try {
 
     routersHandler(app);
 
-    app.use("*", (req, res) => res.send("Not Found"));
+    app.use("*", (req, res) => res.send("Error: Not Found"));
 
     app.listen(5500, () => {
       console.log("Server Running on http://localhost:5500");
@@ -31,6 +29,6 @@ try {
   })();
 } catch (error) {
   app.get("/", (req, res) => {
-    res.send(error);
+    res.json(error);
   });
 }

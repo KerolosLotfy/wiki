@@ -1,15 +1,23 @@
-import React, { useEffect, useState } from "react";
+import React from "react";
 import { NavLink, Link } from "react-router-dom";
 import "./header.css";
 import { FaQuestionCircle } from "react-icons/fa";
-import { HandleQuery } from "../../handleQueries";
+import { useQuery } from "@tanstack/react-query";
 
+import { FetchInfo } from "../../apis/info";
+
+const { getInfo } = new FetchInfo();
 export const Header = () => {
-  const [arr, setArr] = useState();
-  const { nav } = HandleQuery();
-  useEffect(() => {
-    nav && setArr(nav);
-  }, [nav]);
+  const {
+    data: nav,
+    refetch,
+    isLoading,
+  } = useQuery({
+    queryKey: ["getNav"],
+    queryFn: getInfo.nav,
+  });
+
+  refetch();
 
   return (
     <header>
@@ -20,8 +28,8 @@ export const Header = () => {
 
         <nav>
           <ul>
-            {arr &&
-              arr.map((obj) => (
+            {nav &&
+              nav.map((obj) => (
                 <li key={obj.id}>
                   <NavLink to={`info/${obj.title}`}>{obj.title}</NavLink>
                 </li>

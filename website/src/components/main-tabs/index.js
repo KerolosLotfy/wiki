@@ -1,27 +1,26 @@
 import { NavLink } from "react-router-dom";
-import React, { useEffect, useState } from "react";
-import { HandleQuery } from "../../handleQueries";
+import React from "react";
+import { useQuery } from "@tanstack/react-query";
+import { FetchInfo } from "../../apis/info";
 
-export const MainTabs = ({ navId }) => {
-  const [arr, setArr] = useState();
-  const { tabs } = HandleQuery();
-  const navObj = HandleQuery().nav.filter((obj) => obj.id === navId)[0];
+const { getOne } = new FetchInfo();
 
-  useEffect(() => {
-    const arr = tabs && tabs.filter((obj) => obj.navId === navId);
-    tabs && setArr(arr);
-  }, [tabs, navId]);
+export const MainTabs = ({ navId ,navTitle}) => {
+  const { data: tabs, refetch } = useQuery({
+    queryKey: ["getTabsByNav"],
+    queryFn: () => getOne.tabs(navId),
+  });
+
+  refetch();
 
   return (
     <div className="mainTabs">
       <ul>
-        {arr?.length
-          ? arr.map((obj) => {
+        {tabs?.length
+          ? tabs.map((obj) => {
               return (
                 <li key={obj.id} id={obj.id}>
-                  <NavLink to={`${navObj.title}/${obj.title}`}>
-                    {obj.title}
-                  </NavLink>
+                  <NavLink to={`${navTitle}/${obj.title}`}>{obj.title}</NavLink>
                 </li>
               );
             })

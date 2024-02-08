@@ -1,7 +1,7 @@
-import { navTabs } from "./nav.js";
-import { questions } from "./questions.js";
-import { subTabs } from "./subTabs.js";
-import { tabs } from "./tabs.js";
+import { navTabs } from "./nav.mjs";
+import { questions } from "./questions.mjs";
+import { subTabs } from "./subTabs.mjs";
+import { tabs } from "./tabs.mjs";
 export const routersHandler = (app) => {
   // Questions
   app.use("/api/q", questions);

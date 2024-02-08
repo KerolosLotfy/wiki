@@ -1,34 +1,36 @@
-import React, { useEffect, useState } from "react";
+import React from "react";
 import { SubTabs } from "./subTabs";
 import { useLocation } from "react-router-dom";
 import { SubContent } from "./subTabs/subContent";
-import { HandleQuery } from "../../../handleQueries";
-export const Content = ({ navId }) => {
-  const [arr, setArr] = useState();
-  const [tab, setTab] = useState();
+import { FetchInfo } from "../../../apis/info";
+import { useQuery } from "@tanstack/react-query";
+
+const { getOne } = new FetchInfo();
+
+export const Content = ({ navId, navTitle }) => {
   const { pathname } = useLocation();
-  const { tabs, sub } = HandleQuery();
+  const { data: tabs, refetch } = useQuery({
+    queryKey: ["getTabsByNav"],
+    queryFn: () => getOne.tabs(navId),
+  });
 
-  const objTab =
-    tabs &&
-    tabs
-      .filter((obj) => obj.navId === navId)
-      .filter((obj) => pathname.search(obj.title) > 0)[0];
+  const objTab = tabs && tabs.filter((obj) => pathname.search(obj.title) > 0);
 
-  const filterSub = objTab && sub.filter((obj) => obj.tabId === objTab.id);
-
-  useEffect(() => {
-    setTab(objTab);
-    setArr(filterSub);
-  }, [objTab]);
+  refetch();
 
   return (
     <>
-      {arr?.length ? (
-        <div id={tab.id}>
-          <h3 className="mainTitle">{tab.mainTitle}</h3>
-          {objTab && <SubTabs subTabs={arr} objTab={objTab} />}
-          <SubContent subTabs={arr} />
+      {objTab?.length ? (
+        <div id={objTab[0].id}>
+          <h3 className="mainTitle">{objTab[0].maintitle}</h3>
+          {objTab && (
+            <SubTabs
+              tabId={objTab[0].id}
+              navTitle={navTitle}
+              tabTitle={objTab[0].title}
+            />
+          )}
+          <SubContent tabId={objTab[0].id} />
         </div>
       ) : (
         "NO Content"
