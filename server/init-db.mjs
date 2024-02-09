@@ -1,8 +1,8 @@
 import pg from "pg";
 import dotenv from "dotenv";
 import { env } from "process";
-
 dotenv.config();
+
 const config = {
   host: env.DB_HOST,
   port: env.PORT,
@@ -13,5 +13,3 @@ const config = {
 };
 
 export const pool = new pg.Pool(config);
-
-

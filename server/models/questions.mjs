@@ -5,7 +5,7 @@ export class Question {
     try {
       const conDB = await pool.connect();
       const sql = `insert into questions (question,answer) values ($1,$2);`;
-      const result = await pool.query(sql, [question, answer]);
+      const result = await conDB.query(sql, [question, answer]);
       conDB.release();
       if (result.rowCount) return "Added";
     } catch (e) {
@@ -29,7 +29,7 @@ export class Question {
     try {
       const conDB = await pool.connect();
       const sql = `select * from questions where id=$1 `;
-      const result = await pool.query(sql, [id]);
+      const result = await conDB.query(sql, [id]);
       conDB.release();
       return result.rows[0];
     } catch (e) {
@@ -41,7 +41,7 @@ export class Question {
     try {
       const conDB = await pool.connect();
       const sql = `UPDATE questions SET question = $1, answer = $2 WHERE id = $3`;
-      const result = await pool.query(sql, [question, answer, id]);
+      const result = await conDB.query(sql, [question, answer, id]);
       conDB.release();
       if (result.rowCount) return "Updated";
     } catch (e) {
@@ -53,7 +53,7 @@ export class Question {
     try {
       const conDB = await pool.connect();
       const sql = `DELETE FROM questions WHERE id =$1`;
-      const result = await pool.query(sql, [id]);
+      const result = await conDB.query(sql, [id]);
       conDB.release();
       if (result.rowCount) return "Deleted";
     } catch (e) {
