@@ -3,7 +3,7 @@ import cors from "cors";
 import { routersHandler } from "./handler/index.mjs";
 import { pool } from "./init-db.mjs";
 
-const port = process.env.PORT || 3000;
+const port = process.env.PORT || 5500;
 
 export const app = express();
 app.use(express.json());
@@ -12,6 +12,7 @@ app.use(cors());
 
 try {
   (async () => {
+    await pool.connect()
     app.get("/", (req, res) => {
       return res.statusCode == 200
         ? res.json("Server Running")
@@ -23,9 +24,8 @@ try {
 
     app.get("/test", async (req, res) => {
       try {
-        const db = await pool.connect();
-        const data = await db.query("select * from questions");
-        db.release();
+        const data = await pool.query("select * from questions");
+        pool.end();
         res.json({ data: data.rows });
       } catch (error) {
         res.json({ message: error.message });
