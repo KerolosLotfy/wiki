@@ -11,7 +11,8 @@
   "scripts": {
     "pg": "db-migrate up --config database.json -e dev",
     "dev": "yarn pg &nodemon run server.mjs",
-    "start": "yarn pg&node server.mjs"
+    "start": "yarn pg&node server.mjs",
+    "build": "yarn install"
   },
   "author": "",
   "license": "ISC",
