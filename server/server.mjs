@@ -12,18 +12,18 @@ app.use(cors());
 
 try {
   (async () => {
-    await pool.connect()
     app.get("/", (req, res) => {
       return res.statusCode == 200
-        ? res.json("Server Running")
+      ? res.json("Server Running")
         : res.json({
             err: req.statusCode,
             message: req.statusMessage,
           });
     });
-
+    
     app.get("/test", async (req, res) => {
       try {
+        await pool.connect()
         const data = await pool.query("select * from questions");
         pool.end();
         res.json({ data: data.rows });
