@@ -21,26 +21,25 @@ try {
 
     app.get("/test", async (req, res) => {
       try {
-        const result = await pool.query("SELECT * from questions");
-        res.json({ data: result.rows });
-        // Hello world!
-      } catch (err) {
-        console.error(err);
-      } finally {
-        await pool.end();
+        const db = await pool.connect();
+        const data = await db.query("select * from questions");
+        db.release()
+        res.json({ data: data.rows });
+      } catch (error) {
+        res.json({ message: error.message });
       }
     });
 
-    // app.get("/test1", async (req, res) => {
-    //   try {
-    //     const db = await pool.connect();
-    //     const data = await db.query("select * from questions");
-    //     db.release(true);
-    //     res.json({ data: data.rows });
-    //   } catch (error) {
-    //     res.json({ message: error.message });
-    //   }
-    // });
+    app.get("/test1", async (req, res) => {
+      try {
+        const db = await pool.connect();
+        const data = await db.query("select * from nav");
+        db.release()
+        res.json({ data: data.rows });
+      } catch (error) {
+        res.json({ message: error.message });
+      }
+    });
 
     routersHandler(app);
 
@@ -48,7 +47,7 @@ try {
 
     app.listen(5500, () => {
       console.log(
-        `Server Running on ${process.env.PORT || "5500"}`
+        `Server Running on ${process.env.URL_SERVER || "http://localhost:5500"}`
       );
     });
   })();
