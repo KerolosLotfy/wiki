@@ -22,12 +22,12 @@ try {
     app.get("/test", async (req, res) => {
       try {
         const result = await pool.query("SELECT * from questions");
-        res.json({ data: data.rows });
+        res.json({ data: result.rows });
         // Hello world!
       } catch (err) {
         console.error(err);
       } finally {
-        await client.end();
+        await pool.end();
       }
     });
 
@@ -48,7 +48,7 @@ try {
 
     app.listen(5500, () => {
       console.log(
-        `Server Running on ${process.env.URL_SERVER || "http://localhost:5500"}`
+        `Server Running on ${process.env.PORT || "5500"}`
       );
     });
   })();
