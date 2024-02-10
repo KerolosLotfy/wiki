@@ -3,6 +3,7 @@ import cors from "cors";
 import { routersHandler } from "./handler/index.mjs";
 import { pool } from "./init-db.mjs";
 
+const = port = process.env.PORT || 5500
 export const app = express();
 app.use(express.json());
 app.use(express.urlencoded({ extended: true }));
@@ -45,9 +46,9 @@ try {
 
     app.use("*", (req, res) => res.send("Error: Not Found"));
 
-    app.listen(5500, () => {
+    app.listen(port, () => {
       console.log(
-        `Server Running on ${process.env.URL_SERVER || "http://localhost:5500"}`
+        `Server Running on ${port}  }`
       );
     });
   })();
