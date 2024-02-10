@@ -19,17 +19,17 @@ try {
           });
     });
 
-    app.get("/test", async (req, res) => {
-      try {
-        const result = await client.query("SELECT * from questions");
-        res.json({ data: data.rows });
-        // Hello world!
-      } catch (err) {
-        console.error(err);
-      } finally {
-        await client.end();
-      }
-    });
+    // app.get("/test", async (req, res) => {
+    //   try {
+    //     const result = await client.query("SELECT * from questions");
+    //     res.json({ data: data.rows });
+    //     // Hello world!
+    //   } catch (err) {
+    //     console.error(err);
+    //   } finally {
+    //     await client.end();
+    //   }
+    // });
 
     app.get("/test1", async (req, res) => {
       try {
