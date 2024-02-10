@@ -13,6 +13,6 @@ const config = {
 };
 
 // export const pool = new pg.Pool(config);
-export const client = new pg.Client(config);
-await client.connect()
+export const pool = new pg.Client(config);
+await pool.connect()
 

@@ -1,7 +1,7 @@
 import express, { json } from "express";
 import cors from "cors";
 import { routersHandler } from "./handler/index.mjs";
-import { client } from "./init-db.mjs";
+import { pool } from "./init-db.mjs";
 
 export const app = express();
 app.use(express.json());
@@ -21,7 +21,7 @@ try {
 
     app.get("/test", async (req, res) => {
       try {
-        const result = await client.query("SELECT * from questions");
+        const result = await pool.query("SELECT * from questions");
         res.json({ data: data.rows });
         // Hello world!
       } catch (err) {
