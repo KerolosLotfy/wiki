@@ -3,7 +3,7 @@ import cors from "cors";
 import { routersHandler } from "./handler/index.mjs";
 import { pool } from "./init-db.mjs";
 
-const = port = process.env.PORT || 5500
+const port = process.env.PORT || 5500
 export const app = express();
 app.use(express.json());
 app.use(express.urlencoded({ extended: true }));
