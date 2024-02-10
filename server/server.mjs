@@ -1,7 +1,7 @@
 import express, { json } from "express";
 import cors from "cors";
 import { routersHandler } from "./handler/index.mjs";
-import { pool } from "./init-db.mjs";
+import { pool, client } from "./init-db.mjs";
 
 export const app = express();
 app.use(express.json());
@@ -21,20 +21,21 @@ try {
 
     app.get("/test", async (req, res) => {
       try {
-        const db = await pool.connect();
-        const data = await db.query("select * from questions");
-        db.release()
+        const result = await client.query("SELECT * from questions");
         res.json({ data: data.rows });
-      } catch (error) {
-        res.json({ message: error.message });
+        // Hello world!
+      } catch (err) {
+        console.error(err);
+      } finally {
+        await client.end();
       }
     });
 
     app.get("/test1", async (req, res) => {
       try {
         const db = await pool.connect();
-        const data = await db.query("select * from nav");
-        db.release()
+        const data = await db.query("select * from questions");
+        db.release(true);
         res.json({ data: data.rows });
       } catch (error) {
         res.json({ message: error.message });
