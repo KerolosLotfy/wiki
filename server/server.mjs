@@ -22,31 +22,30 @@ try {
 
     app.get("/test", async (req, res) => {
       try {
-        const db = await pool.connect();
-        const data = await db.query("select * from questions");
-        db.release()
+        const data = await pool.query("select * from questions");
+        // db.release()
         res.json({ data: data.rows });
       } catch (error) {
         res.json({ message: error.message });
       }
     });
 
-    app.get("/test1", async (req, res) => {
-      try {
-        const db = await pool.connect();
-        const data = await db.query("select * from nav");
-        db.release()
-        res.json({ data: data.rows });
-      } catch (error) {
-        res.json({ message: error.message });
-      }
-    });
+    // app.get("/test1", async (req, res) => {
+    //   try {
+    //     const db = await pool.connect();
+    //     const data = await db.query("select * from nav");
+    //     db.release()
+    //     res.json({ data: data.rows });
+    //   } catch (error) {
+    //     res.json({ message: error.message });
+    //   }
+    // });
 
     routersHandler(app);
 
     app.use("*", (req, res) => res.send("Error: Not Found"));
 
-    app.listen(port, () => {
+    app.listen(port, '0.0.0.0', () => {
       console.log(
         `Server Running on ${port}  }`
       );
