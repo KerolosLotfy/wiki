@@ -12,5 +12,4 @@ const config = {
   ssl:true
 };
 
-export const pool = new pg.Client(config);
-await pool.connect()
+export const pool = new pg.Pool(config);
