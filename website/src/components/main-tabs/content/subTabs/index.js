@@ -2,6 +2,7 @@ import React from "react";
 import { NavLink } from "react-router-dom";
 import { FetchInfo } from "../../../../apis/info";
 import { useQuery } from "@tanstack/react-query";
+import { Loading } from "../../../../loading";
 const { getOne } = new FetchInfo();
 
 export const SubTabs = ({ tabId, navTitle, tabTitle }) => {

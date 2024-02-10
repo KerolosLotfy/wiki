@@ -1,16 +1,15 @@
 import React from "react";
-// import { Questions } from "./questions";
-// import { Add } from "./add";
-import { Soon } from "../../soon";
-import './sr.css'
+import { SlaData } from "./sla.js";
+import { Add } from "./add";
+import "./sla.css";
 
-export const SR = () => {
+export const SLA = () => {
   return (
-    <section id="sr">
+    <section id="sla">
       <div className="container">
-        {/* <Add /> */}
-        {/* <Search /> */}
-        <Soon />
+        <Add />
+        <Search />
+        <SlaData />
       </div>
     </section>
   );
@@ -18,14 +17,11 @@ export const SR = () => {
 
 const searching = (e) => {
   e.preventDefault();
-  let list = document.querySelectorAll(".questions ul li");
+  let list = document.querySelectorAll(".sla ul li");
   list.forEach((li) => (li.style.display = "none"));
   list.forEach((li) => {
     if (
       li.children[1].children[1].textContent
-        .toLowerCase()
-        .includes(e.target.value.toLowerCase()) ||
-      li.children[2].children[1].textContent
         .toLowerCase()
         .includes(e.target.value.toLowerCase())
     ) {
@@ -38,7 +34,7 @@ export const Search = () => {
     <form>
       <input
         type="text"
-        placeholder="Search by Level 3"
+        placeholder="Search by SLA Case"
         id="search"
         onInput={(e) => searching(e)}
       />

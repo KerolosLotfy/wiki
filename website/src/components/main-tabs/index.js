@@ -1,17 +1,26 @@
 import { NavLink } from "react-router-dom";
-import React from "react";
+import React, { useEffect } from "react";
 import { useQuery } from "@tanstack/react-query";
 import { FetchInfo } from "../../apis/info";
+import { Loading } from "../../loading";
 
 const { getOne } = new FetchInfo();
 
-export const MainTabs = ({ navId ,navTitle}) => {
-  const { data: tabs, refetch } = useQuery({
+export const MainTabs = ({ navId, navTitle }) => {
+  const {
+    data: tabs,
+    refetch,
+    isLoading,
+  } = useQuery({
     queryKey: ["getTabsByNav"],
     queryFn: () => getOne.tabs(navId),
   });
 
-  refetch();
+  useEffect(() => {
+    refetch();
+  }, [refetch]);
+
+  if (isLoading) return <Loading />;
 
   return (
     <div className="mainTabs">

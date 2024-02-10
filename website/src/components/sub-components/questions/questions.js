@@ -2,6 +2,7 @@ import { useMutation, useQuery } from "@tanstack/react-query";
 import { FetchQuestions } from "../../../apis/questions";
 import { useEffect } from "react";
 import { FaTrash } from "react-icons/fa";
+import { Loading } from "../../../loading";
 const { getQ, delQ } = new FetchQuestions();
 
 export const Questions = () => {
@@ -15,11 +16,10 @@ export const Questions = () => {
     mutationKey: ["delQ"],
   });
 
-  useEffect(() => {
-    refetch();
-  }, [refetch]);
+  refetch();
+  useEffect(() => {}, [refetch]);
 
-  if (isLoading) return <div>Loading ....</div>;
+  if (isLoading) return <Loading />;
 
   if (error) return <div>Error: {error.message}</div>;
 

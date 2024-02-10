@@ -5,6 +5,7 @@ import { Content } from "../../main-tabs/content";
 import "./subTabs.css";
 import { FetchInfo } from "../../../apis/info";
 import { useQuery } from "@tanstack/react-query";
+import { Loading } from "../../../loading";
 
 const { getInfo } = new FetchInfo();
 export const Info = () => {

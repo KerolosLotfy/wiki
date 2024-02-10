@@ -32,6 +32,10 @@ export const Header = () => {
               ))}
 
             <li>
+              <NavLink to="sla">SLA</NavLink>
+            </li>
+
+            <li>
               <NavLink to="quizzes">
                 <FaQuestionCircle size={40} />
               </NavLink>

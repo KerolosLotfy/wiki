@@ -12,4 +12,4 @@ const config = {
   ssl:true
 };
 
-export const pool = new pg.Client(config);
+export const pool = new pg.Pool(config);

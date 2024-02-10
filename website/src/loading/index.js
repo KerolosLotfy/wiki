@@ -3,8 +3,9 @@ import image from "../assets/logo.svg";
 
 export const Loading = () => {
   useEffect(() => {
+    const img = document.querySelector(".react-logo");
     setTimeout(() => {
-      document.querySelector(".react-logo").style.display = "none";
+      img.style.display = "none";
     }, 2000);
   });
   return (
@@ -14,7 +15,7 @@ export const Loading = () => {
       alt="we"
       width={100}
       height={100}
-      style={{ maxWidth: "100%" }}
+      style={{ maxWidth: "100%", display: "inline-block" }}
     ></img>
   );
 };

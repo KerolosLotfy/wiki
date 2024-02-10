@@ -1,8 +1,8 @@
 import { FaPlusCircle } from "react-icons/fa";
-import { FetchQuestions } from "../../../apis";
+import { FetchSLA } from "../../../apis/sla";
 import { useState } from "react";
 import { useMutation } from "@tanstack/react-query";
-const { postQ } = new FetchQuestions();
+const { postQ } = new FetchSLA();
 export const Add = () => {
   const [form, setForm] = useState(false);
 
@@ -21,10 +21,11 @@ export const Add = () => {
 
   const newQ = async (e) => {
     e.preventDefault();
-    let q = document.querySelector("#question").value;
-    let a = document.querySelector("#answer").value;
+    let c = document.querySelector("#case").value;
+    let n = document.querySelector("#normalSLA").value;
+    let d = document.querySelector("#delaySLA").value;
     setForm(false);
-    return { question: q, answer: a };
+    return { cases: c, normal: n, delay: d   };
   };
 
   return (
@@ -43,19 +44,22 @@ export const Add = () => {
 
       {form && (
         <form className="newForm">
-          <h3>Add New SR</h3>
-          <input
-            type="text"
-            name="level3"
-            placeholder="Insert Level 3"
-            id="srTitle"
-          />
-          <input
-            type="text"
-            name="sr"
-            placeholder="Insert SR"
-            id="sr"
-          />
+          <h3>Add New SLA</h3>
+          <input type="text" name="case" placeholder="Insert case" id="case" />
+          <div style={{ display: "flex" }}>
+            <input
+              type="text"
+              name="normal"
+              placeholder="Insert normal SLA"
+              id="normalSLA"
+            />
+            <input
+              type="text"
+              name="delay"
+              placeholder="Insert delay SLA"
+              id="delaySLA"
+            />
+          </div>
           <button
             type="submit"
             onClick={async (e) => mutation.mutate(await newQ(e))}

@@ -3,16 +3,16 @@ import axios from "axios";
 // console.log(process.env.KK);
 const URL_SERVER = "http://localhost:5500/";
 
-export class FetchQuestions {
+export class FetchSLA {
   getQ = () =>
     axios
-      .get(`${URL_SERVER}api/q`)
+      .get(`${URL_SERVER}api/sla`)
       .then((res) => res.data)
       .catch((e) => e.message);
 
   postQ = (body) => {
     axios
-      .post(`${URL_SERVER}api/q`, body)
+      .post(`${URL_SERVER}api/sla`, body)
       .then((res) => {
         return res.data;
       })
@@ -21,7 +21,7 @@ export class FetchQuestions {
 
   delQ = (id) => {
     axios
-      .delete(`${URL_SERVER}api/q/`, {
+      .delete(`${URL_SERVER}api/sla/`, {
         headers: {
           "Content-Type": "application/json",
         },
@@ -32,7 +32,7 @@ export class FetchQuestions {
         return res.data;
       })
       .catch((e) => e.message);
-    axios.delete(`${URL_SERVER}api/q/`, {
+    axios.delete(`${URL_SERVER}api/sla/`, {
       headers: {
         "Content-Type": "application/json",
       },

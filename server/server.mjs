@@ -14,18 +14,18 @@ try {
   (async () => {
     app.get("/", (req, res) => {
       return res.statusCode == 200
-      ? res.json("Server Running")
+        ? res.json("Server Running")
         : res.json({
             err: req.statusCode,
             message: req.statusMessage,
           });
     });
-    
+
     app.get("/test", async (req, res) => {
       try {
-        await pool.connect()
-        const data = await pool.query("select * from questions");
-        pool.end();
+        const db = await pool.connect();
+        const data = await db.query("select * from questions");
+        db.release();
         res.json({ data: data.rows });
       } catch (error) {
         res.json({ message: error.message });

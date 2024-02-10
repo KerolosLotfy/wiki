@@ -1,0 +1,67 @@
+#dashboard {
+  display: flex;
+  gap: 10px;
+  width: 100%;
+}
+
+
+
+#dashboard aside .tools {
+  padding: 0;
+  justify-content: flex-start;
+}
+
+#dashboard aside li {
+  display: flex;
+  flex-direction: column;
+  padding: 0;
+}
+
+#dashboard aside li .head {
+  background-color: #666;
+  width: 100%;
+  padding: 10px;
+  margin-bottom: 10px;
+  font-size: 16px;
+}
+
+#dashboard aside li > * {
+  /* margin: 0; */
+  box-shadow: none;
+  padding: 10px;
+}
+
+#dashCont {
+	display: flex;
+	flex: 1;
+	padding: 10px;
+
+}
+
+
+#dashCont ul{
+	width: 100%;
+	max-height: 500px;
+	/* background-color: #666; */
+	overflow-y: scroll;
+}
+
+#dashCont ul li{
+	display: flex;
+	justify-content: space-between;
+	/* padding: 10px; */
+	align-items: center;
+	background-image: linear-gradient(var(--gradient));
+	margin-bottom: 20px;
+	color: var(--light);
+	gap: 30px;
+}
+
+#dashCont ul li .title{
+	background-color: #aaa;
+	padding: 10px 30px;
+	width: max-content;
+	color: #000;
+	flex: 1;
+	cursor: pointer;
+}
