@@ -44,13 +44,28 @@
   border-radius: 10px 0 10px 0;
   color: var(--dark);
 }
+.subContent > * {
+  padding-left: 20px;
+}
 
-.subContent .head {
+.subContent li {
+  margin-bottom: 10px;
+}
+
+.subContent b {
+  font-weight: 900;
+  font-size: 15px;
+  background-color: #ddd;
+}
+
+.subContent  .head {
+  margin-bottom: 10px;
   color: var(--text);
   width: 100%;
   height: max-content;
   font-weight: bolder;
   text-transform: capitalize;
+  font-size: 16px;
 }
 
 .subContent .update {
@@ -63,14 +78,19 @@
   font-weight: bolder;
 }
 
-.subContent .sla {
-  font-weight: bolder;
-  box-shadow: 0 0 10px var(--dark);
+.subContent .note {
+  border: 2px solid var(--text);
+  padding: 5px;
   width: max-content;
   height: max-content;
-  background-image: linear-gradient(45deg, var(--gradient));
+}
+
+.subContent .sla {
+  width: max-content;
+  height: max-content;
+  background-image: linear-gradient(var(--gradient));
   color: var(--light);
-  padding: 5px;
+  padding: 3px;
   border-radius: 0 10px 0 10px;
 }
 

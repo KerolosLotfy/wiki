@@ -19,7 +19,12 @@ export const Header = () => {
     <header>
       <div className="container">
         <div id="logo">
-          <Link to="/">wiki</Link>
+          <Link
+            to="http://wiki/SiteAssets/WIKI%20Main%20Page/new_tech_page.html"
+            target="_blank"
+          >
+            wiki
+          </Link>
         </div>
 
         <nav>
